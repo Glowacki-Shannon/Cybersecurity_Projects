@@ -2,11 +2,11 @@
 
 Cybersecurity is my passion, and I've channelled that passion into a collection of practical projects that highlight my dedication to honing my skills. Each project here represents a step forward in my journey to understand and address the evolving challenges in cybersecurity. Dive into this repository to explore a diverse array of cybersecurity projects, each presenting its unique set of challenges and solutions. Whether you're a fellow enthusiast seeking inspiration, a beginner looking for hands-on learning opportunities, or a prospective employer curious about my approach, there's something here for you.
 
-## Malware Analysis Techniques - Dylan Barker
+# Malware Analysis Techniques - Dylan Barker
 <details>
 <summary><h3>Chapter 2 - Static Analysis - Techniques and Tooling</h3></summary>
 
-#### Hashing_Algorithms
+## Hashing_Algorithms
 
 Hashing algorithms are cryptographic techniques used to transform data (usually of variable sizes) into a fixed-length string of characters, which is typically a hexadecimal number. These algorithms are designed to be fast to compute but difficult to reverse, making them suitable for various security and data integrity purposes. They are known as one-way functions. Very easy to compute in one direction, however, they are extremely difficult to reverse engineer.
 
@@ -65,14 +65,14 @@ There are many choices for hashing data, though it is important you choose a has
 
 
 
-##### Obtaining_file_hashes
+## Obtaining_file_hashes
 
-##### Leveraging_VirusTotal
+## Leveraging_VirusTotal
 
 VirusTotal stands as a formidable tool for static malware analysis, offering assistance in the identification and attribution of malicious software through its extensive repo of publicly accessible data. It is widely used by analysts all over the world and assists us in making sure we don't continuously find ourselves rediscovering the wheel.  
 
 
-#### Getting_Fuzzy (ssdeep.exe)
+## Getting_Fuzzy (ssdeep.exe)
 
 
 
@@ -81,7 +81,7 @@ VirusTotal stands as a formidable tool for static malware analysis, offering ass
 
 
 
-#### Picking_Up_The_Pieces
+## Picking_Up_The_Pieces
 
 ##### *A table of common file headers related to malware*
 
@@ -97,15 +97,15 @@ VirusTotal stands as a formidable tool for static malware analysis, offering ass
 
 
 
-#### Malware_Stereotyping
+## Malware_Stereotyping
 
-#### Collecting_Strings
+## Collecting_Strings
 
-#### Further_Reading
+## Further_Reading
 
-#### Challenge 1
+## Challenge 1
 
-###### **What is the SHA256 hash of the sample?**
+### **What is the SHA256 hash of the sample?**
 
 
 
@@ -113,7 +113,7 @@ VirusTotal stands as a formidable tool for static malware analysis, offering ass
 B6D7E579A24EFC09C2DBA13CA90622790866E017A3311C1809C5041E91B7A930
 *Algorithm*:
 SHA256
-###### **What is the ssdeep hash of the sample?**
+### **What is the ssdeep hash of the sample?**
 
 
 
@@ -123,15 +123,15 @@ SHA256
 *format*:
 chunksize:chunk:double_chunk
 
-###### **Can you attribute this sample to a particular malware family?**
+### **Can you attribute this sample to a particular malware family?**
 
 
 ##### Attribution
 *Malware Family*: **Trojan Malware**
 
-#### Challenge 2
+## Challenge 2
 
-###### Utilising the second sample, can you correctly identify the kill-switch domain?
+### Utilising the second sample, can you correctly identify the kill-switch domain?
 
 
 First, I obtained a strings dump of the malware sample. This can be done using the `strings.exe `command, or similar tools like ``objdump`` or `IDAPython` can be utilised for more complex analysis.
@@ -139,7 +139,12 @@ First, I obtained a strings dump of the malware sample. This can be done using t
 
 
 
-Secondly, I had to think about the question. The question points to a kill-switch domain and although I am familiar with what a domain is, it took some further research to understand what a kill-switch domain is. After some googling and some reading, it seems as though this domain which 
+Secondly, I had to think about the question. The question points to a kill-switch domain and although I am familiar with what a domain is, it took some further research to understand what a kill-switch domain is. After some googling and some reading, it seems as though this domain, referred to as a "kill-switch domain," plays a critical role in cybersecurity and threat mitigation. This domain essentially acts as a safeguard against the spread and impact of malware. It is the communication channel between the malware and its C2 (Command and Control) server. If we as security researchers can access this domain, it means we also have an opportunity to use it to collect information and insights on the outbreak and the scope of the outbreak. This domain is what Marcus Hutchins used to stop the WannaCry Ransomware outbreak.
+
+So using this information and my Powershell knowledge, I was able to search the string dump for a pattern associated with domains - the obvious choice was: `http://|https://`
+
+
+
 
 </details>
 <details>
