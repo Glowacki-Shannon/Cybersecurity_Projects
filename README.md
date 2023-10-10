@@ -109,18 +109,18 @@ VirusTotal stands as a formidable tool for static malware analysis, offering ass
 
 
 
-*Hash*:
+***Hash***:
 B6D7E579A24EFC09C2DBA13CA90622790866E017A3311C1809C5041E91B7A930
-*Algorithm*:
+***Algorithm***:
 SHA256
 ### **What is the ssdeep hash of the sample?**
 
 
 
-*ssdeep.exe "fuzzy" hash*:
+***ssdeep.exe "fuzzy" hash***:
 3072:C5OLkQW8JS0k0wcBalDIs3hlAp5+hQQE89X3Qo+PgaE3:CsWnGYlAp5+hR9sYaE
 
-*format*:
+***format***:
 chunksize:chunk:double_chunk
 
 ### **Can you attribute this sample to a particular malware family?**
@@ -141,7 +141,7 @@ First, I obtained a strings dump of the malware sample. This can be done using t
 
 Secondly, I had to think about the question. The question points to a kill-switch domain and although I am familiar with what a domain is, it took some further research to understand what a kill-switch domain is. After some googling and some reading, it seems as though this domain, referred to as a "kill-switch domain," plays a critical role in cybersecurity and threat mitigation. This domain essentially acts as a safeguard against the spread and impact of malware. It is the communication channel between the malware and its C2 (Command and Control) server. If we as security researchers can access this domain, it means we also have an opportunity to use it to collect information and insights on the outbreak and the scope of the outbreak. This domain is what Marcus Hutchins used to stop the WannaCry Ransomware outbreak.
 
-So using this information and my Powershell knowledge, I was able to search the string dump for a pattern associated with domains - the obvious choice was: `http://|https://`
+So using this information and my Powershell knowledge, I was able to search the string dump for a pattern associated with domains - the obvious choice was the scheme: `http://|https://`
 
 
 
