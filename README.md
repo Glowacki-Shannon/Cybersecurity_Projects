@@ -126,7 +126,6 @@ chunksize:chunk:double_chunk
 ### **Can you attribute this sample to a particular malware family?**
 
 
-##### Attribution
 *Malware Family*: **Trojan Malware**
 
 ## Challenge 2
