@@ -2,11 +2,11 @@
 
 Cybersecurity is my passion, and I've channelled that passion into a collection of practical projects that highlight my dedication to honing my skills. Each project here represents a step forward in my journey to understand and address the evolving challenges in cybersecurity. Dive into this repository to explore a diverse array of cybersecurity projects, each presenting its unique set of challenges and solutions. Whether you're a fellow enthusiast seeking inspiration, a beginner looking for hands-on learning opportunities, or a prospective employer curious about my approach, there's something here for you.
 
-# PROJECT1: Malware Analysis Techniques - Dylan Barker
+## PROJECT1: Malware Analysis Techniques - Dylan Barker
 <details>
 <summary><h3>Chapter 2 - Static Analysis - Techniques and Tooling</h3></summary>
 
-## Hashing_Algorithms
+### Hashing_Algorithms
 
 Hashing algorithms are cryptographic techniques used to transform data (usually of variable sizes) into a fixed-length string of characters, which is typically a hexadecimal number. These algorithms are designed to be fast to compute but difficult to reverse, making them suitable for various security and data integrity purposes. They are known as one-way functions. Very easy to compute in one direction, however, they are extremely difficult to reverse engineer.
 
@@ -65,7 +65,7 @@ There are many choices for hashing data, though it is important you choose a has
 
 In the following section, you will find an image illustrating how the MD5 algorithm is vulnerable to collision attacks. Additionally, you will see how simply rehashing the data with a stronger algorithm, such as SHA-256, allows us to confirm the file's uniqueness.
 
-## Obtaining_file_hashes
+### Obtaining_file_hashes
 
 <a href="https://imgur.com/bm9VWdm"><img src="https://i.imgur.com/bm9VWdm.png" title="source: imgur.com" /></a>
 
@@ -80,7 +80,7 @@ MacOS/Linux Terminal
 `hash_algorithm path/to/file.ext`
 
 
-## Leveraging_VirusTotal
+### Leveraging_VirusTotal
 
 VirusTotal stands as a formidable tool for static malware analysis, offering assistance in the identification and attribution of malicious software through its extensive repo of publicly accessible data. It is widely used by analysts all over the world and assists us in making sure we don't continuously find ourselves rediscovering the wheel.
 
@@ -90,7 +90,7 @@ In the upcoming image, we'll observe how inputting a hash value into VirusTotal 
 
 <a href="https://imgur.com/ofovMqm"><img src="https://i.imgur.com/ofovMqm.png" title="source: imgur.com" /></a>
 
-## Getting_Fuzzy (ssdeep.exe)
+### Getting_Fuzzy (ssdeep.exe)
 
 A common technique implemented by authors of malware - *hashbusting*
 
@@ -104,7 +104,7 @@ In the following screenshot, I use a fuzzy hashing algorithm that adopts a simil
 
 **fromat**: chunksize:chunk:double_chunk
 
-## Picking_Up_The_Pieces
+### Picking_Up_The_Pieces
 
 ##### *A table of common file headers related to malware*
 
@@ -124,7 +124,7 @@ In the next section, I explored one such stratagy.
 
 <a href="https://imgur.com/gE0ro53"><img src="https://i.imgur.com/gE0ro53.png" title="source: imgur.com" /></a>
 
-## Malware_Stereotyping
+### Malware_Stereotyping
 
 When I tried to open the sample 888888.png, I observed that it exhibited behaviour typical of corrupted files. I learned, upon further reading, that sometimes adversaries change the extension of files, and sometimes they omit them altogether, even creating double extentions, such as dontlooktwice.doc.exe. They do this in order to attempt to obfuscate their true intent, bypass EDR (Endpoint Detection and Response) or use social engineering to lure their victim into executing their payload.
 
@@ -134,19 +134,19 @@ I used a Windows OS tool not native to Windows, but helpful nonetheless. The too
 
 <a href="https://imgur.com/pzskSxo"><img src="https://i.imgur.com/pzskSxo.png" title="source: imgur.com" /></a>
 
-## Collecting_Strings
+### Collecting_Strings
 
 <a href="https://imgur.com/HQE5RF6"><img src="https://i.imgur.com/HQE5RF6.png" title="source: imgur.com" /></a>
 
 <a href="https://imgur.com/hqdaya8"><img src="https://i.imgur.com/hqdaya8.png" title="source: imgur.com" /></a>
 
-## Further_Reading
+### Further_Reading
 
 [ssdeep advanced usage: click here!!!](https://ssdeep-project.github.io/ssdeep/usage.html)
 
-## Challenge 1
+### Challenge 1
 
-### **What is the SHA256 hash of the sample?**
+#### **What is the SHA256 hash of the sample?**
 
 <a href="https://imgur.com/CIwwTFX"><img src="https://i.imgur.com/CIwwTFX.png" title="source: imgur.com" /></a>
 
@@ -155,7 +155,7 @@ B6D7E579A24EFC09C2DBA13CA90622790866E017A3311C1809C5041E91B7A930
 ***Algorithm***:
 SHA256
 
-### **What is the ssdeep hash of the sample?**
+#### **What is the ssdeep hash of the sample?**
 
 <a href="https://imgur.com/UPYWqtV"><img src="https://i.imgur.com/UPYWqtV.png" title="source: imgur.com" /></a>
 
@@ -165,15 +165,15 @@ SHA256
 ***format***:
 chunksize:chunk:double_chunk
 
-### **Can you attribute this sample to a particular malware family?**
+#### **Can you attribute this sample to a particular malware family?**
 
 <a href="https://imgur.com/bfWuSOT"><img src="https://i.imgur.com/bfWuSOT.png" title="source: imgur.com" /></a>
 
 *Malware Family*: **Trojan Malware**
 
-## Challenge 2
+### Challenge 2
 
-### Utilising the second sample, can you correctly identify the kill-switch domain?
+#### Utilising the second sample, can you correctly identify the kill-switch domain?
 
 
 First, I obtained a strings dump of the malware sample. This can be done using the `strings.exe` command, or similar tools like `objdump` or `IDAPython` can be utilised for more complex analysis.
@@ -209,7 +209,7 @@ Surely enough it returned the 'kill-switch' domain, without the noise.
   <summary><h3>Chapter 8: De-Obfuscating Malicious Scripts: Putting the Toothpaste Back in the Tube</h3></summary>
 </details>
 
-# PROJECT2: Mr Robot (CTF) - VulnHub/Leon Johnson
+## PROJECT2: Mr Robot (CTF) - VulnHub/Leon Johnson
 
 <details>
   
