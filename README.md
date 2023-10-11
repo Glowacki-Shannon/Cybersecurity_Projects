@@ -8,7 +8,7 @@ Cybersecurity is my passion, and I've channelled that passion into a collection 
 
 ### Hashing_Algorithms
 
-Hashing algorithms are cryptographic techniques used to transform data (usually of variable sizes) into a fixed-length string of characters, which is typically a hexadecimal number. These algorithms are designed to be fast to compute but difficult to reverse, making them suitable for various security and data integrity purposes. They are known as one-way functions. Very easy to compute in one direction, however, they are extremely difficult to reverse engineer.
+Hashing algorithms are cryptographic techniques used to transform data (usually of variable sizes) into a fixed-length string of characters, which is typically a hexadecimal number. These algorithms are designed to be fast to compute but difficult to reverse, making them suitable for various security and data integrity purposes. They are known as one-way functions, and they are extremely difficult to reverse engineer.
 
 Here's a rundown of some commonly used hashing algorithms:
 
@@ -118,19 +118,19 @@ In the following screenshot, I use a fuzzy hashing algorithm that adopts a simil
 |%PDF-  |PDF document|
 |MSCF   |Microsoft cabinet files (.cab)|
 
-In the screenshot provided, we encounter a .png file. The question is this: how as analysts, do we make certain that it is what it truly claims to be? To investigate further, we should acknowledge that a file can disclose more details about itself without the need for excecution. Attackers frequently employ a handful of conventional strategies aimed at slowing down our malware analysis efforts. 
+In the screenshot provided, we encounter a .png file. The question is this: how as analysts, do we make certain that it is what it truly claims to be? To investigate further, we should acknowledge that a file can disclose more details about itself without the need for execution. Attackers frequently employ a handful of conventional strategies aimed at slowing down our malware analysis efforts. 
 
-In the next section, I explored one such stratagy.
+In the next section, I explored one such strategy.
 
 <a href="https://imgur.com/gE0ro53"><img src="https://i.imgur.com/gE0ro53.png" title="source: imgur.com" /></a>
 
 ### Malware_Stereotyping
 
-When I tried to open the sample 888888.png, I observed that it exhibited behaviour typical of corrupted files. I learned, upon further reading, that sometimes adversaries change the extension of files, and sometimes they omit them altogether, even creating double extentions, such as dontlooktwice.doc.exe. They do this in order to attempt to obfuscate their true intent, bypass EDR (Endpoint Detection and Response) or use social engineering to lure their victim into executing their payload.
+When I tried to open the sample 888888.png, I observed that it exhibited behaviour typical of corrupted files. I learned, upon further reading, that sometimes adversaries change the extension of files, and sometimes they omit them altogether, even creating double extensions, such as dontlooktwice.doc.exe. They do this in order to attempt to obfuscate their true intent, bypass EDR (Endpoint Detection and Response) or use social engineering to lure their victim into executing their payload.
 
 This is but an aesthetic change in most circumstances. In the computing world, all files have a header that indicates to the OS a way of interpreting the file. This header can be used to 'type' a file, akin to a crime forensic analyst typing blood samples.
 
-I used a Windows OS tool not native to Windows, but helpful nonetheless. The tool I used is called `filetype.exe` and whilst it serves as a great tool for dicerning the files true nature, in this case an excecutable file (.exe); another way to ascertain this information is use a hexidecimal editor, such as 010 Editor - with this we can also inspect the files header. 
+I used a Windows OS tool not native to Windows, but helpful nonetheless. The tool I used is called `filetype.exe` and whilst it serves as a great tool for discerning the file's true nature, in this case, an executable file (.exe); another way to ascertain this information is to use a hexadecimal editor, such as 010 Editor - with this we can also inspect the file's header. 
 
 <a href="https://imgur.com/pzskSxo"><img src="https://i.imgur.com/pzskSxo.png" title="source: imgur.com" /></a>
 
