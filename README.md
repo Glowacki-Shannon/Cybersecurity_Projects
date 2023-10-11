@@ -96,14 +96,13 @@ A common technique implemented by authors of malware - *hashbusting*
 
 Hashbusting ensures each malware sample has a unique static hash, and has become a popular technique among threat actors and advanced malware authors, such as the actor behind the EMOTET threat. It is worth your time researching implementations of hashbusting as they vary. 
 
-"In the constant arms race of malware authoring and Digital Forensics and Incident Response (DFIR) analysts attempting to find solutions to common obfuscation techniques, hashbusting has also been addressed in the form of fuzzy hashing." - Dylan Barker 
+"In the constant arms race of malware authoring and Digital Forensics and Incident Response (DFIR) analysts attempting to find solutions to common obfuscation techniques, hashbusting has also been addressed in the form of fuzzy hashing." - Dylan Barker
+
+In the following screenshot, I use a fuzzy hashing algorithm that adopts a similarity digest, which is a process of compact representation (digest) of data that captures its essential features while allowing for the detection of near-duplicates or similar data. Plainly, fuzzy hashing is a technique used to spot datasets that are similar but not necessarily identical. The 'ssdeep' algorithm breaks the data up into smaller chunks and then proceeds to hash those chunks, which is useful for identifying near-duplicates when modifications have been made by the author in order to obfuscate. So even if modifications have been made to mask the data from being discovered as malicious, the chunks can be compared, and if similarities are detected, then the likelihood of the data being the same is affirmed.
 
 <a href="https://imgur.com/HSN7Z93"><img src="https://i.imgur.com/HSN7Z93.png" title="source: imgur.com" /></a>
 
-
-
-
-
+**fromat**: chunksize:chunk:double_chunk
 
 ## Picking_Up_The_Pieces
 
@@ -119,11 +118,21 @@ Hashbusting ensures each malware sample has a unique static hash, and has become
 |%PDF-  |PDF document|
 |MSCF   |Microsoft cabinet files (.cab)|
 
+In the screenshot provided, we encounter a .png file. The question is this: how as analysts, do we make certain that it is what it truly claims to be? To investigate further, we should acknowledge that a file can disclose more details about itself without the need for excecution. Attackers frequently employ a handful of conventional strategies aimed at slowing down our malware analysis efforts. 
+
+In the next section, I explored one such stratagy.
+
 <a href="https://imgur.com/gE0ro53"><img src="https://i.imgur.com/gE0ro53.png" title="source: imgur.com" /></a>
 
-<a href="https://imgur.com/pzskSxo"><img src="https://i.imgur.com/pzskSxo.png" title="source: imgur.com" /></a>
-
 ## Malware_Stereotyping
+
+When I tried to open the sample 888888.png, I observed that it exhibited behaviour typical of corrupted files. I learned, upon further reading, that sometimes adversaries change the extension of files, and sometimes they omit them altogether, even creating double extentions, such as dontlooktwice.doc.exe. They do this in order to attempt to obfuscate their true intent, bypass EDR (Endpoint Detection and Response) or use social engineering to lure their victim into executing their payload.
+
+This is but an aesthetic change in most circumstances. In the computing world, all files have a header that indicates to the OS a way of interpreting the file. This header can be used to 'type' a file, akin to a crime forensic analyst typing blood samples.
+
+I used a Windows OS tool not native to Windows, but helpful nonetheless. The tool I used is called `filetype.exe` and whilst it serves as a great tool for dicerning the files true nature, in this case an excecutable file (.exe); another way to ascertain this information is use a hexidecimal editor, such as 010 Editor - with this we can also inspect the files header. 
+
+<a href="https://imgur.com/pzskSxo"><img src="https://i.imgur.com/pzskSxo.png" title="source: imgur.com" /></a>
 
 ## Collecting_Strings
 
@@ -132,6 +141,8 @@ Hashbusting ensures each malware sample has a unique static hash, and has become
 <a href="https://imgur.com/hqdaya8"><img src="https://i.imgur.com/hqdaya8.png" title="source: imgur.com" /></a>
 
 ## Further_Reading
+
+[ssdeep advanced usage: click here!!!](https://ssdeep-project.github.io/ssdeep/usage.html)
 
 ## Challenge 1
 
@@ -143,6 +154,7 @@ Hashbusting ensures each malware sample has a unique static hash, and has become
 B6D7E579A24EFC09C2DBA13CA90622790866E017A3311C1809C5041E91B7A930
 ***Algorithm***:
 SHA256
+
 ### **What is the ssdeep hash of the sample?**
 
 <a href="https://imgur.com/UPYWqtV"><img src="https://i.imgur.com/UPYWqtV.png" title="source: imgur.com" /></a>
@@ -169,12 +181,13 @@ First, I obtained a strings dump of the malware sample. This can be done using t
 <a href="https://imgur.com/frfrqVY"><img src="https://i.imgur.com/frfrqVY.png" title="source: imgur.com" /></a>
 
 
-Secondly, I had to consider the question. The question reffered to a kill-switch domain, and while I am familiar with what a domain is, it required some additional research to understand the concept of a kill-switch domain. After some googling and some reading, it seems as though this domain, known as a "kill-switch domain," plays a critical role in cybersecurity and threat mitigation. This domain essentially functions as a safeguard against the spread and impact of malware, serving as the communication channel between the malware and its C2 (Command and Control) server. If we as security researchers can access this domain, it can assist us in gaining new insights and potentially disrupt or control the malware's communication with the C2 server. This domain is very reason Marcus Hutchins was able to put a stop to the spread of the WannaCry Ransomware outbreak of May 2017.
+Secondly, I had to consider the question. The question referred to a kill-switch domain, and while I am familiar with what a domain is, it required some additional research to understand the concept of a kill-switch domain. After some googling and some reading, it seems as though this domain, known as a "kill-switch domain," plays a critical role in cybersecurity and threat mitigation. This domain essentially functions as a safeguard against the spread and impact of malware, serving as the communication channel between the malware and its C2 (Command and Control) server. If we as security researchers can access this domain, it can assist us in gaining new insights and potentially disrupt or control the malware's communication with the C2 server. This domain is the very reason Marcus Hutchins was able to put a stop to the spread of the WannaCry Ransomware outbreak of May 2017.
 
 So using this information and my Powershell knowledge, I was able to search the string dump for a pattern associated with domains - the obvious choice was the scheme: `http://|https://`
 
 <a href="https://imgur.com/38yE0PZ"><img src="https://i.imgur.com/38yE0PZ.png" title="source: imgur.com" /></a>
 
+Surely enough it returned the 'kill-switch' domain, without the noise.
 
 </details>
 <details>
@@ -194,4 +207,10 @@ So using this information and my Powershell knowledge, I was able to search the 
 </details>
 <details>
   <summary><h3>Chapter 8: De-Obfuscating Malicious Scripts: Putting the Toothpaste Back in the Tube</h3></summary>
+</details>
+
+# PROJECT2: Mr Robot (CTF) - VulnHub/Leon Johnson
+
+<details>
+  
 </details>
