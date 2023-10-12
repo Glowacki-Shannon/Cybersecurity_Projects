@@ -136,9 +136,15 @@ I used a Windows OS tool not native to Windows, but helpful nonetheless. The too
 
 ### Collecting_Strings
 
+In the provided screenshot, I've employed the 'strings.exe' utility to capture the output of our sample, redirecting it into a .txt file to facilitate in-depth analysis. A strings dump can reveal valuable insights, especially when you possess a clear understanding of what to seek within it. 
+
 <a href="https://imgur.com/HQE5RF6"><img src="https://i.imgur.com/HQE5RF6.png" title="source: imgur.com" /></a>
 
+This method unveils hardcoded text strings that often contain valuable clues, such as suspicious URLs, IP addresses, and domain names, shedding light on communication channels and potential command and control servers. Additionally, it can expose function and method names, unveiling the malware's operational tactics. Information about file paths, registry keys, and cryptographic keys can also be unearthed, aiding in malware removal and further decryption. Error messages and debug information may reveal hints about the development process, while configuration data provides insights into the malware's settings and objectives. 
+
 <a href="https://imgur.com/hqdaya8"><img src="https://i.imgur.com/hqdaya8.png" title="source: imgur.com" /></a>
+
+The Windows API function names unveiled in the screenshot above provide critical insights into how the software interacts with the underlying operating system. Additionally, clues related to the software's origin and target region can be inferred from language and locale details present in the image. While the screenshot serves as a valuable initial step in understanding the software's interactions, a holistic analysis often involves the combination of dynamic and static assessments to gain a comprehensive understanding of its behavior and impact.
 
 ### Further_Reading
 
@@ -192,6 +198,11 @@ Surely enough it returned the 'kill-switch' domain, without the noise.
 </details>
 <details>
   <summary><h3>Chapter 3: Dynamic Analysis - Techniques and Tooling</h3></summary>
+     
+### Detonating_your_malware
+
+
+  
 </details>
 <details>
   <summary><h3>Chapter 4: A Word on Automated Sandboxing</h3></summary>
@@ -210,7 +221,7 @@ Surely enough it returned the 'kill-switch' domain, without the noise.
 </details>
 
 ## PROJECT2: Mr Robot (CTF) - VulnHub/Leon Johnson
-
 <details>
-  
+  <summary><h3>Flag1</h3></summary>
+
 </details>
