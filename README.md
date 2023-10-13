@@ -205,7 +205,15 @@ Surely enough it returned the 'kill-switch' domain, without the noise. (see abov
      
 ### Detonating_your_malware
 
-As I was going through this chapter, I couldn't help but notice a problem. The sample associated with Chapter 3 didn't seem to be a clear Emotet sample. We are given a TrickBot.xls (.exe) file. This unexpected development prompted me to turn to the internet in search of answers. Knowing the book's creator as a meticulous individual, I set out to unravel the mystery surrounding this unexpected file. In the course of my exploration, I stumbled upon insights regarding TrickBot and its connection to Emotet. It became apparent that the TrickBot sample had assumed the role of a dropper for other malware, namely Emotet and IcedID. TrickBot, in this instance, is the initial payload and precursor to Emotet, which follows as a payload.
+As I was going through this chapter, I couldn't help but notice a problem. The sample associated with Chapter 3 didn't seem to be a clear Emotet sample. 
+
+In a GitHub commit, I noticed that the author had actually not intended for us to follow the Emotet example in Chapter 3. This was because Emotet's C2s (Command and Control servers) are known to frequently change. It turned out to be a great opportunity for me to dive into some research and learn as much as I could about Emotet. 
+
+We are given a TrickBot.xls (.exe) file. This unexpected development prompted me to turn to the internet in search of answers. Knowing the book's creator as a meticulous individual, I set out to unravel the mystery surrounding this unexpected file. In the course of my exploration, I stumbled upon insights regarding TrickBot and its connection to Emotet. It became apparent that the TrickBot sample assumes the role of a dropper for other malware. 
+
+So TrickBot, in this instance, is the initial payload and precursor to other malware such as Emotet, which follows as a payload.
+
+The TrickBot sample is provided for us to use as a case study that aligns with the knowledge we've acquired in Chapter 3. We can apply the concepts and techniques learned in that chapter to analyze this sample effectively. However, it's important to note that a Microsoft Office license is required for this analysis, as the sample contains Office-related components.
 
 A dropper's function, especially for those of us who are learning about cybersecurity, is like that of a hidden courier. Imagine it as a secret agent delivering a package, where the package is actually malware or a virus. When a dropper is activated on a computer or system, its main job is to quietly and sneakily bring in other harmful programs or files.
 
