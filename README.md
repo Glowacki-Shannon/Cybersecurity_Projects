@@ -61,9 +61,9 @@ Here's a rundown of some commonly used hashing algorithms:
   - Output Length: Variable (32 or 64 bits)
   - Designed for fast hashing and checksumming.
 
-There are many choices for hashing data, though it is important you choose a hashing algorithm to suit your specific needs. For cryptographic security, newer and more secure algorithms like SHA-256, SHA-512, bcrypt, scrypt, Argon2, and BLAKE2 are recommended. MD5 and SHA-1 have both exhibited collision vulnerabilities and are also prone to attacks that undermine the one-way property of secure hash functions. MD5 and SHA-1 should be avoided in security-critical applications due to being considered broken.  
+There are many choices for hashing data, though it is important we choose a hashing algorithm to suit our specific needs. For cryptographic security, newer and more secure algorithms like SHA-256, SHA-512, bcrypt, scrypt, Argon2, and BLAKE2 are recommended. MD5 and SHA-1 have both exhibited collision vulnerabilities and are also prone to attacks that undermine the one-way property of secure hash functions. MD5 and SHA-1 should be avoided in security-critical applications due to being considered broken.  
 
-In the following section, you will find an image illustrating how the MD5 algorithm is vulnerable to collision attacks. Additionally, you will see how simply rehashing the data with a stronger algorithm, such as SHA-256, allows us to confirm the file's uniqueness.
+In the following section, you will find an image illustrating how the MD5 algorithm is vulnerable to collision attacks. Additionally, you will see how simply rehashing the data with a stronger algorithm, such as SHA-256, allowed me to confirm the file's uniqueness.
 
 ### Obtaining_file_hashes
 
@@ -86,7 +86,7 @@ VirusTotal stands as a formidable tool for static malware analysis, offering ass
 
 <a href="https://imgur.com/YaUEj3E"><img src="https://i.imgur.com/YaUEj3E.png" title="source: imgur.com" /></a>
 
-In the upcoming image, we'll observe how inputting a hash value into VirusTotal and clicking 'search' produces results. This is made possible by the collective efforts of thousands of analysts who have previously submitted this file.
+In the upcoming screenshot, we'll observe how inputting a hash value into VirusTotal and clicking 'search' produces results. This is made possible by the collective efforts of thousands of analysts who have previously submitted this file.
 
 <a href="https://imgur.com/ofovMqm"><img src="https://i.imgur.com/ofovMqm.png" title="source: imgur.com" /></a>
 
@@ -118,7 +118,11 @@ In the following screenshot, I use a fuzzy hashing algorithm that adopts a simil
 |%PDF-  |PDF document|
 |MSCF   |Microsoft cabinet files (.cab)|
 
-In the screenshot provided, we encounter a .png file. The question is this: how as analysts, do we make certain that it is what it truly claims to be? To investigate further, we should acknowledge that a file can disclose more details about itself without the need for execution. Attackers frequently employ a handful of conventional strategies aimed at slowing down our malware analysis efforts. 
+In the screenshot provided, we encounter a .png file. 
+
+The question is this: how as analysts, do we make certain that a file is what it truly claims to be? 
+
+To investigate further, we should acknowledge that a file can disclose more details about itself without the need for execution. Attackers frequently employ a handful of conventional strategies aimed at slowing down our malware analysis efforts. 
 
 In the next section, I explored one such strategy.
 
@@ -128,15 +132,15 @@ In the next section, I explored one such strategy.
 
 When I tried to open the sample 888888.png, I observed that it exhibited behaviour typical of corrupted files. I learned, upon further reading, that sometimes adversaries change the extension of files, and sometimes they omit them altogether, even creating double extensions, such as dontlooktwice.doc.exe. They do this in order to attempt to obfuscate their true intent, bypass EDR (Endpoint Detection and Response) or use social engineering to lure their victim into executing their payload.
 
-This is but an aesthetic change in most circumstances. In the computing world, all files have a header that indicates to the OS a way of interpreting the file. This header can be used to 'type' a file, akin to a crime forensic analyst typing blood samples.
+This is but an aesthetic change in most circumstances. In the computational world, all files have a header that indicates to the OS a way of interpreting the file. This header can be used to 'type' a file, analogous to a crime forensic analyst typing blood samples.
 
-I used a Windows OS tool not native to Windows, but helpful nonetheless. The tool I used is called `filetype.exe` and whilst it serves as a great tool for discerning the file's true nature, in this case, an executable file (.exe); another way to ascertain this information is to use a hexadecimal editor, such as 010 Editor - with this we can also inspect the file's header. 
+I used a Windows OS tool not native to Windows, but helpful nonetheless. The tool I used is called `filetype.exe` and whilst it serves as a great tool for discerning the file's true nature, in this case, an executable file (.exe). Another way to ascertain this information is to use a hexadecimal editor, such as 'Hex Fiend' for MacOS, or '010 Editor' for Windows also allows us to inspect the file's header. 
 
 <a href="https://imgur.com/pzskSxo"><img src="https://i.imgur.com/pzskSxo.png" title="source: imgur.com" /></a>
 
 ### Collecting_Strings
 
-In the provided screenshot, I've employed the 'strings.exe' utility to capture the output of our sample, redirecting it into a .txt file to facilitate in-depth analysis. A strings dump can reveal valuable insights, especially when you possess a clear understanding of what to seek within it. 
+In the provided screenshot, I've employed the 'strings.exe' utility to capture the output of our sample, redirecting it into a .txt file to facilitate in-depth analysis. A strings dump can reveal valuable insights, especially when you possess a clear understanding of what to look for within it. 
 
 <a href="https://imgur.com/HQE5RF6"><img src="https://i.imgur.com/HQE5RF6.png" title="source: imgur.com" /></a>
 
@@ -144,7 +148,7 @@ This method unveils hardcoded text strings that often contain valuable clues, su
 
 <a href="https://imgur.com/hqdaya8"><img src="https://i.imgur.com/hqdaya8.png" title="source: imgur.com" /></a>
 
-The Windows API function names unveiled in the screenshot above provide critical insights into how the software interacts with the underlying operating system. Additionally, clues related to the software's origin and target region can be inferred from language and locale details present in the image. While the screenshot serves as a valuable initial step in understanding the software's interactions, a holistic analysis often involves the combination of dynamic and static assessments to gain a comprehensive understanding of its behavior and impact.
+The Windows API (Application Programming Interface) function names unveiled in the screenshot above provide critical insights into how the malicious software interacts with the underlying operating system. Additionally, clues related to the software's origin and target region can be inferred from the language and locale details present in these dumps. While the screenshot serves as a valuable initial step in understanding the software's interactions, a holistic analysis often involves the combination of dynamic and static assessments to gain a comprehensive understanding of its behaviour and impact.
 
 ### Further_Reading
 
@@ -193,13 +197,21 @@ So using this information and my Powershell knowledge, I was able to search the 
 
 <a href="https://imgur.com/38yE0PZ"><img src="https://i.imgur.com/38yE0PZ.png" title="source: imgur.com" /></a>
 
-Surely enough it returned the 'kill-switch' domain, without the noise.
+Surely enough it returned the 'kill-switch' domain, without the noise. (see above)
 
 </details>
 <details>
   <summary><h3>Chapter 3: Dynamic Analysis - Techniques and Tooling</h3></summary>
      
 ### Detonating_your_malware
+
+As I was going through this chapter, I couldn't help but notice a problem. The sample associated with Chapter 3 didn't seem to be a clear Emotet sample. We are given a TrickBot.xls (.exe) file. This unexpected development prompted me to turn to the internet in search of answers. Knowing the book's creator as a meticulous individual, I set out to unravel the mystery surrounding this unexpected file. In the course of my exploration, I stumbled upon insights regarding TrickBot and its connection to Emotet. It became apparent that the TrickBot sample had assumed the role of a dropper for other malware, namely Emotet and IcedID. TrickBot, in this instance, is the initial payload and precursor to Emotet, which follows as a payload.
+
+A dropper's function, especially for those of us who are learning about cybersecurity, is like that of a hidden courier. Imagine it as a secret agent delivering a package, where the package is actually malware or a virus. When a dropper is activated on a computer or system, its main job is to quietly and sneakily bring in other harmful programs or files.
+
+This can happen after you unintentionally download a file from an email, a website, or even from a seemingly harmless source. The dropper's role is to get this bad stuff inside your system without you noticing. Once it's in, it can unleash all sorts of harmful things like viruses, ransomware, or spyware.
+
+So, in a nutshell, a dropper's function is to sneakily introduce malicious software into a computer, making it a crucial part of cyberattacks.
 
 
   
