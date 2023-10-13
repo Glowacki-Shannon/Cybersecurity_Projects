@@ -213,6 +213,8 @@ We are given a TrickBot.xls (.exe) file. This unexpected development prompted me
 
 So TrickBot, in this instance, is the initial payload and precursor to other malware such as Emotet, which follows as a payload.
 
+<a href="https://imgur.com/O3sJb6H"><img src="https://i.imgur.com/O3sJb6H.png" title="source: imgur.com" /></a>
+
 The TrickBot sample is provided for us to use as a case study that aligns with the knowledge we've acquired in Chapter 3. We can apply the concepts and techniques learned in that chapter to analyze this sample effectively. However, it's important to note that a Microsoft Office license is required for this analysis, as the sample contains Office-related components.
 
 A dropper's function, especially for those of us who are learning about cybersecurity, is like that of a hidden courier. Imagine it as a secret agent delivering a package, where the package is actually malware or a virus. When a dropper is activated on a computer or system, its main job is to quietly and sneakily bring in other harmful programs or files.
@@ -243,5 +245,11 @@ So, in a nutshell, a dropper's function is to sneakily introduce malicious softw
 ## PROJECT2: Mr Robot (CTF) - VulnHub/Leon Johnson
 <details>
   <summary><h3>Flag1</h3></summary>
+
+</details>
+
+## PROJECT3: pfSense Firewall on Protectli Vault with NordVPN (Home Network)
+<details>
+  <summary><h3></h3></summary>
 
 </details>
