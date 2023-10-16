@@ -207,7 +207,9 @@ Surely enough it returned the 'kill-switch' domain, without the noise. (see abov
 
 As I was going through this chapter, I couldn't help but notice a problem. The sample associated with Chapter 3 didn't seem to be a clear Emotet sample. 
 
-In a GitHub commit, I noticed that the author had actually not intended for us to follow the Emotet example in Chapter 3. This was because Emotet's C2s (Command and Control servers) are known to frequently change. It turned out to be a great opportunity for me to dive into some research and learn as much as I could about Emotet. 
+In a GitHub commit, I noticed that the author had actually not intended for us to follow the Emotet example in Chapter 3. This was because Emotet's C2s (Command and Control servers) are known to frequently change and since law enforcement actions, many of them were shut down. It turned out to be a great opportunity for me to dive into some research and learn as much as I could about Emotet.
+
+You can find some really good information on Emotet - 
 
 We are given a TrickBot.xls (.exe) file. This unexpected development prompted me to turn to the internet in search of answers. Knowing the book's creator as a meticulous individual, I set out to unravel the mystery surrounding this unexpected file. In the course of my exploration, I stumbled upon insights regarding TrickBot and its connection to Emotet. It became apparent that the TrickBot sample assumes the role of a dropper for other malware. 
 
